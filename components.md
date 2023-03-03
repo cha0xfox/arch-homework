@@ -25,18 +25,18 @@ System_Boundary(order_site, "Сайт услуг") {
    
 }
 
-Rel(admin, web_site, "Просмотр, добавление и редактирование информации о пользователях, услугах, партнерах")
-Rel(techsup, web_site, "Решение инцедентов с пользователями, просмотр заказов, редактирование пользователей")
-Rel(user, web_site, "Регистрация, просмотр услуг, заказ услуг, оплата")
+Rel(admin, web_site, "Просмотр, добавление и редактирование информации о пользователях, услугах, партнерах","HTTPS")
+Rel(techsup, web_site, "Решение инцедентов с пользователями, просмотр заказов, редактирование пользователей","HTTPS")
+Rel(user, web_site, "Регистрация, просмотр услуг, заказ услуг, оплата","HTTPS")
 
-Rel(web_site, auth_service, "Работа с пользователями", "localhost/person")
-Rel(auth_service, db, "INSERT/SELECT/UPDATE", "SQL")
+Rel(web_site, auth_service, "Работа с пользователями", "HTTPS/REST")
+Rel(auth_service, db, "INSERT/SELECT/UPDATE", "JDBC, TCP:3306")
 
-Rel(web_site, catalog_service, "Работа с услугами", "localhost/pres")
-Rel(catalog_service, db, "INSERT/SELECT/UPDATE", "SQL")
+Rel(web_site, catalog_service, "Работа с услугами", "HTTPS/REST")
+Rel(catalog_service, db, "INSERT/SELECT/UPDATE", "JDBC, TCP:3306")
 
-Rel(web_site, ordering_service, "Работа с заказами", "localhost/conf")
-Rel(ordering_service, db, "INSERT/SELECT/UPDATE", "SQL")
+Rel(web_site, ordering_service, "Работа с заказами", "HTTPS/REST")
+Rel(ordering_service, db, "INSERT/SELECT/UPDATE", "JDBC, TCP:3306")
 
 @enduml
 ```
@@ -105,22 +105,22 @@ Rel(admin, web_site, "Просмотр, добавление и редактир
 Rel(techsup, web_site, "Решение инцедентов с пользователями, просмотр заказов, редактирование пользователей")
 Rel(user, web_site, "Регистрация, просмотр услуг, заказ услуг, оплата")
 
-Rel(web_site, auth_service, "Работа с пользователями", "localhost/person")
-Rel(auth_service, db, "INSERT/SELECT/UPDATE", "SQL")
+Rel(web_site, auth_service, "Работа с пользователями", "HTTPS/REST")
+Rel(auth_service, db, "INSERT/SELECT/UPDATE", "JDBC, TCP:3306")
 
-Rel(web_site, catalog_service, "Работа с услугами", "localhost/pres")
-Rel(catalog_service, db, "INSERT/SELECT/UPDATE", "SQL")
+Rel(web_site, catalog_service, "Работа с услугами", "HTTPS/REST")
+Rel(catalog_service, db, "INSERT/SELECT/UPDATE", "JDBC, TCP:3306")
 
-Rel(web_site, ordering_service, "Работа с заказами", "localhost/conf")
-Rel(ordering_service, db, "INSERT/SELECT/UPDATE", "SQL")
-Rel(ordering_service, partner_service, "/api", "REST HTTPS")
+Rel(web_site, ordering_service, "Работа с заказами", "HTTPS/REST")
+Rel(ordering_service, db, "INSERT/SELECT/UPDATE", "JDBC, TCP:3306")
+Rel(ordering_service, partner_service, "/api", "HTTPS/REST")
 
-Rel(web_site, payment_service, "Работа с способами оплаты", "localhost/conf")
-Rel(payment_service, db, "INSERT/SELECT/UPDATE", "SQL")
+Rel(web_site, payment_service, "Работа с способами оплаты", "HTTPS/REST")
+Rel(payment_service, db, "INSERT/SELECT/UPDATE", "JDBC, TCP:3306")
 
-Rel(partner_api, partner_service, "Работа с услугами", "JSON over HTTPS")
-Rel(partner_service, partner_api, "Работа с заказами", "JSON over HTTPS")
-Rel(partner_service, catalog_service, "/api", "REST HTTPS")
+Rel(partner_api, partner_service, "Работа с услугами", "HTTPS/REST")
+Rel(partner_service, partner_api, "Работа с заказами", "HTTPS/REST")
+Rel(partner_service, catalog_service, "/api", "HTTPS/REST")
 
 @enduml
 ```
